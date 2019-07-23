@@ -44,33 +44,83 @@ namespace ContactDLL
 
         public string Name
         {
-            get; set;
+            get => _Name;
+            set
+            {
+                _Name = value;
+            }
         }
 
         public string Patronymic
         {
-            get; set;
+            get => _Patronymic;
+            set
+            {
+                _Patronymic = value;
+            }
         }
 
         public string TaxpayerIdentificationNumber
         {
-            get; set;
+            get => _TaxpayerIdentificationNumber;
+            set
+            {
+                _TaxpayerIdentificationNumber = value;
+            }
         }
 
         public string Position
         {
-            get; set;
+            get => _Position;
+            set
+            {
+                _Position = value;
+            }
         }
-
         public string Sex
         {
-            get; set;
+            get => _Sex;
+            set
+            {
+                _Sex = value;
+            }
         }
 
         [MinimalBirthDate(2001, 10, 3)] //YYYY.MM.DD
         public DateTime BirthDate
         {
-            get; set;
+            get => _BirthDate;
+            set
+            {
+                _BirthDate = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Concat(new object[] { Surname, " ", Name, " ",
+                Patronymic, " ", TaxpayerIdentificationNumber, " ",
+                Position, " ", Sex, " ", BirthDate});
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Contact contact = obj as Contact;
+            if (contact as Contact == null)
+                return false;
+            return contact.Surname.Equals(this.Surname) &&
+                contact.Name.Equals(this.Name) &&
+                contact.Patronymic.Equals(this.Patronymic) &&
+                contact.TaxpayerIdentificationNumber.Equals(this.TaxpayerIdentificationNumber) &&
+                contact.Position.Equals(this.Position) &&
+                contact.Sex.Equals(this.Sex) &&
+                contact.BirthDate == this.BirthDate;
+        }
+        public override int GetHashCode()
+        {
+            return new { Surname, Name, Patronymic, TaxpayerIdentificationNumber, Position, Sex, BirthDate }.GetHashCode();
         }
 
         #region
