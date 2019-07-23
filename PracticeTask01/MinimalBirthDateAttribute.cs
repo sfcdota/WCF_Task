@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace PracticeTask01
 {
     [AttributeUsage(AttributeTargets.Property)]
-    class MinimalBirthDateAttribute: System.Attribute
+    class MinimalBirthDateAttribute : System.Attribute
     {
-        public DateTime MinimalDate { get; set; }
+        public string MinimalDate { get; set; }
     }
 }

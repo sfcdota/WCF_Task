@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PracticeTask01
 {
-    [AttributeUsage (AttributeTargets.Class)]
-    class ClassDescriptionAttribute: System.Attribute
+    [AttributeUsage(AttributeTargets.Class)]
+    class ClassDescriptionAttribute : System.Attribute
     {
         public string Description { get; set; }
     }
