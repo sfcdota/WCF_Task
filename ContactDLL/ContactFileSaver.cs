@@ -26,6 +26,7 @@ namespace ContactDLL
                 + person.Sex + ';'
                 + person.BirthDate
                 );
+            writer.Dispose();
         }
 
         #region

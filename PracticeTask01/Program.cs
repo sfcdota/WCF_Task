@@ -18,11 +18,10 @@ namespace PracticeTask01
             else return false;
         }
 
-
-        static void Main(string[] args)
+        public static void CheckBirthDateProperty()
         {
             Contact contact = new Contact() { BirthDate = DateTime.Now };
-
+            ContactFileSaver saver = new ContactFileSaver();
             Type type = typeof(Contact);
             PropertyInfo propertyInfo = type.GetProperty(nameof(Contact.BirthDate),
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
@@ -42,6 +41,13 @@ namespace PracticeTask01
             Console.WriteLine("ContactBirthDate: " + contact.BirthDate.ToString());
             bool isValid = ValidateBirthDate(contact, limitYear, limitMonth, limitDay);
             Console.WriteLine(isValid);
+        }
+
+
+
+        static void Main(string[] args)
+        {
+            CheckBirthDateProperty();
             Console.ReadKey();
             
         }
