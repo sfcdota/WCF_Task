@@ -12,8 +12,8 @@ namespace PracticeTask01
         FileStream stream;
         public ContactFileSaver()
         {
-            FileStream stream = new FileStream("SavedContacts.txt", FileMode.OpenOrCreate);
-
+            FileStream newstream = new FileStream("SavedContacts.txt", FileMode.OpenOrCreate);
+            stream = newstream;
         }
 
         public void Save(Contact person)

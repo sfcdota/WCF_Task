@@ -10,6 +10,9 @@ namespace PracticeTask01
     {
         static void Main(string[] args)
         {
+            Contact contact = new Contact();
+            contact.BirthDate = "2001.01.30";
+            
         }
     }
 }
