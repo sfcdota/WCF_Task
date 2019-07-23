@@ -5,15 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace PracticeTask01
+namespace ContactDLL
 {
-    class ContactFileSaver : IDisposable
+    public class ContactFileSaver : IDisposable
     {
-        FileStream stream;
+        FileStream stream = null;
         public ContactFileSaver()
         {
-            FileStream newstream = new FileStream("SavedContacts.txt", FileMode.OpenOrCreate);
-            stream = newstream;
+            stream = new FileStream("SavedContacts.txt", FileMode.OpenOrCreate);
         }
 
         public void Save(Contact person)
@@ -33,6 +32,7 @@ namespace PracticeTask01
         public void Dispose()
         {
             stream.Close();
+            GC.SuppressFinalize(stream);
         }
         #endregion
     }
