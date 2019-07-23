@@ -17,7 +17,20 @@ namespace ContactDLL
         private string _Position;
         private string _Sex;
         private DateTime _BirthDate;
+        public Contact()
+        {
 
+        }
+        public Contact(string surname, string name, string patronymic, string taxpayerIdentificationNumber, string position, string sex, DateTime birthDate)
+        {
+            _Surname = surname;
+            _Name = name;
+            _Patronymic = patronymic;
+            _TaxpayerIdentificationNumber = taxpayerIdentificationNumber;
+            _Position = position;
+            _Sex = sex;
+            _BirthDate = birthDate;
+        }
 
         public string Surname
         {
@@ -31,45 +44,33 @@ namespace ContactDLL
 
         public string Name
         {
-            get => _Name;
-            set => _Name = value;
+            get; set;
         }
 
         public string Patronymic
         {
-            get => _Patronymic;
-            set => _Patronymic = value;
+            get; set;
         }
 
         public string TaxpayerIdentificationNumber
         {
-            get => _TaxpayerIdentificationNumber;
-            set => _TaxpayerIdentificationNumber = value;
+            get; set;
         }
 
         public string Position
         {
-            get => _Position;
-            set => _Position = value;
+            get; set;
         }
 
         public string Sex
         {
-            get => _Sex;
-            set => _Sex = value;
+            get; set;
         }
 
         [MinimalBirthDate(2001, 10, 3)] //YYYY.MM.DD
         public DateTime BirthDate
         {
-            get
-            {
-                return _BirthDate;
-            }
-            set
-            {
-                    _BirthDate = value;
-            }
+            get; set;
         }
 
         #region

@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="777.snk" />
-    <None Include="PublicKeys.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
