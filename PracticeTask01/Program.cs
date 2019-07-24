@@ -22,7 +22,6 @@ namespace PracticeTask01
         public static void CheckBirthDateProperty()
         {
             Contact contact = new Contact() { BirthDate = DateTime.Now };
-            ContactFileSaver saver = new ContactFileSaver();
             Type type = typeof(Contact);
             PropertyInfo propertyInfo = type.GetProperty(nameof(Contact.BirthDate),
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
@@ -158,6 +157,10 @@ namespace PracticeTask01
             DictionaryDelete(contactsDictionary, temp);
             DictionaryBypass(contactsDictionary);
             CheckBirthDateProperty();
+            ContactFileSaver contactFileSaver = new ContactFileSaver();
+            contactFileSaver.Save(temp);
+            contactFileSaver.Dispose();
+            contactFileSaver.Dispose();
             Console.ReadKey();
             
         }

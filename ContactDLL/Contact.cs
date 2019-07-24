@@ -8,7 +8,7 @@ using System.Reflection;
 namespace ContactDLL
 {
     [ClassDescription(Description = "Контакт")]
-    public class Contact : ICloneable
+    public sealed class Contact : ICloneable
     {
         private string _Surname;
         private string _Name;
@@ -108,7 +108,7 @@ namespace ContactDLL
             if (obj == null)
                 return false;
             Contact contact = obj as Contact;
-            if (contact as Contact == null)
+            if (contact == null)
                 return false;
             return contact.Surname.Equals(this.Surname) &&
                 contact.Name.Equals(this.Name) &&

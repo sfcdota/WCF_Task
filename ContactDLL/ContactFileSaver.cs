@@ -7,17 +7,18 @@ using System.IO;
 
 namespace ContactDLL
 {
-    public class ContactFileSaver : IDisposable
+    public sealed class ContactFileSaver : IDisposable
     {
-        FileStream stream = null;
+        readonly string path = Path.Combine(Environment.CurrentDirectory, "SavedContacts.txt");
+        private FileStream _stream = null;
         public ContactFileSaver()
         {
-            stream = new FileStream("SavedContacts.txt", FileMode.OpenOrCreate);
+            _stream = new FileStream(path, FileMode.OpenOrCreate);
         }
 
         public void Save(Contact person)
         {
-            StreamWriter writer = new StreamWriter(stream);
+            StreamWriter writer = new StreamWriter(_stream);
             writer.WriteLine(person.Surname + ';'
                 + person.Name + ';'
                 + person.Patronymic + ';'
@@ -26,14 +27,14 @@ namespace ContactDLL
                 + person.Sex + ';'
                 + person.BirthDate
                 );
-            writer.Dispose();
+            writer.Close();
         }
 
         #region
         public void Dispose()
         {
-            stream.Close();
-            GC.SuppressFinalize(stream);
+            _stream.Close();
+            GC.SuppressFinalize(_stream);
         }
         #endregion
     }
