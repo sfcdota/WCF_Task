@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
-    class ContactFormatter
+    public enum Extensions
     {
-
+        TXT,
+        CSV,
+        XML
     }
 }

@@ -81,6 +81,10 @@
       <Project>{a77465cb-a42e-44ff-9102-c5530213cfc2}</Project>
       <Name>ContactDLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Formatter.csproj">
+      <Project>{1d6d684e-d19d-444b-95ce-26adcdf7f6aa}</Project>
+      <Name>Formatter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
