@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
-    class CSVContactFormatter: ContactFormatter
+    public class CSVContactFormatter: IFormatter
     {
+        private readonly Contact _Contact;
+        public CSVContactFormatter(Contact contact)
+        {
+            _Contact = contact;
+        }
+
+        public string Format()
+        {
+            return _Contact.Surname + ';'
+                + _Contact.Name + ';'
+                + _Contact.Patronymic + ';'
+                + _Contact.TaxpayerIdentificationNumber + ';'
+                + _Contact.Position + ';'
+                + _Contact.Sex + ';'
+                + _Contact.BirthDate;
+        }
     }
 }

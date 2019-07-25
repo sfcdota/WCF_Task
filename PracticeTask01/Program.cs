@@ -158,7 +158,7 @@ namespace PracticeTask01
             DictionaryDelete(contactsDictionary, temp);
             DictionaryBypass(contactsDictionary);
             CheckBirthDateProperty();
-            ContactFileSaver contactFileSaver = new ContactFileSaver();
+           // ContactFileSaver contactFileSaver = new ContactFileSaver();
             contactFileSaver.Save(temp);
             contactFileSaver.Dispose();
             contactFileSaver.Dispose();
@@ -167,7 +167,7 @@ namespace PracticeTask01
 
 
 
-
+            /*
 
             string contentFormat = "xml";
             Contact contact = new Contact();
@@ -183,10 +183,14 @@ namespace PracticeTask01
             saver.Save(path, text);
 
             FormattedContact formattedContact = new FormattedContact(contact);
+            */
 
 
 
 
+
+            var formatterfactory = new Formatter().ExecuteFormatter(Extensions.CSV, temp);
+            formatterfactory.Format();
 
         }
     }
