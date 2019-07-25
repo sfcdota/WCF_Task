@@ -51,6 +51,7 @@
     <Compile Include="Contact.cs" />
     <Compile Include="ContactFileSaver.cs" />
     <Compile Include="MinimalBirthDateAttribute.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
