@@ -8,7 +8,7 @@ using System.Reflection;
 namespace ContactDLL
 {
     [ClassDescription(Description = "Контакт")]
-    public sealed class Contact : ICloneable
+    public sealed class Contact : Person, ICloneable
     {
         private string _Surname;
         private string _Name;
