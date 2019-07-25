@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticeTask01", "PracticeT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactDLL", "ContactDLL\ContactDLL.csproj", "{A77465CB-A42E-44FF-9102-C5530213CFC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formatter", "Interfaces\Formatter.csproj", "{1D6D684E-D19D-444B-95CE-26ADCDF7F6AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saver", "Saver\Saver.csproj", "{F67210A6-6793-4CED-AE73-10B8079C8E5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A77465CB-A42E-44FF-9102-C5530213CFC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A77465CB-A42E-44FF-9102-C5530213CFC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A77465CB-A42E-44FF-9102-C5530213CFC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D6D684E-D19D-444B-95CE-26ADCDF7F6AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D6D684E-D19D-444B-95CE-26ADCDF7F6AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D6D684E-D19D-444B-95CE-26ADCDF7F6AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D6D684E-D19D-444B-95CE-26ADCDF7F6AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F67210A6-6793-4CED-AE73-10B8079C8E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F67210A6-6793-4CED-AE73-10B8079C8E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F67210A6-6793-4CED-AE73-10B8079C8E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F67210A6-6793-4CED-AE73-10B8079C8E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

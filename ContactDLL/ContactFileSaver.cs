@@ -4,32 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.Xml.XmlConfiguration;
 namespace ContactDLL
 {
-    public sealed class ContactFileSaver : IDisposable
+    public sealed class ContactFileSaver : IDisposable, IContactFileSaver
     {
-        readonly string path = Path.Combine(Environment.CurrentDirectory, "SavedContacts.txt");
         private FileStream _stream = null;
-        public ContactFileSaver()
+        public ContactFileSaver(string path)
         {
             _stream = new FileStream(path, FileMode.OpenOrCreate);
         }
 
-        public void Save(Contact person)
+        public void Save(Contact contact)
         {
             StreamWriter writer = new StreamWriter(_stream);
-            writer.WriteLine(person.Surname + ';'
-                + person.Name + ';'
-                + person.Patronymic + ';'
-                + person.TaxpayerIdentificationNumber + ';'
-                + person.Position + ';'
-                + person.Sex + ';'
-                + person.BirthDate
+            writer.WriteLine(contact.Surname + ';'
+                + contact.Name + ';'
+                + contact.Patronymic + ';'
+                + contact.TaxpayerIdentificationNumber + ';'
+                + contact.Position + ';'
+                + contact.Sex + ';'
+                + contact.BirthDate
                 );
             writer.Close();
+            
         }
-
+        
+        
         #region
         public void Dispose()
         {

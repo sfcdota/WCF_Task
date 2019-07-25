@@ -8,9 +8,9 @@ namespace ContactDLL
 {
     public abstract class Person
     {
-        private string _Surname;
-        private string _Name;
-        private string _Patronymic;
-        private string _Sex;
+        public abstract string _Surname { get; set; }
+        public abstract string _Name { get; set; }
+        public abstract string _Patronymic { get; set; }
+        public abstract string _Sex { get; set; }
     }
 }

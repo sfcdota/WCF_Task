@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using ContactDLL;
+using System.IO;
 
 namespace PracticeTask01
 {
@@ -162,7 +163,31 @@ namespace PracticeTask01
             contactFileSaver.Dispose();
             contactFileSaver.Dispose();
             Console.ReadKey();
-            
+
+
+
+
+
+
+            string contentFormat = "xml";
+            Contact contact = new Contact();
+            IFormatter formatter = FormatterFactory.CreateFormatter(contentFormat);
+
+            string text = formatter.Format(contact);
+            IPersonSaver saver = PersonSaverFactory.CreateSaver();
+
+
+
+            string path = Path.Combine(Environment.CurrentDirectory, "SavedContacts.txt");
+
+            saver.Save(path, text);
+
+            FormattedContact formattedContact = new FormattedContact(contact);
+
+
+
+
+
         }
     }
 }
