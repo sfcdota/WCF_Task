@@ -25,7 +25,7 @@ namespace ContactDLL
             }
             */
         }
-        public IFormatter ExecuteFormatter(Extensions extensions, Contact contact)
+        public IFormatter CreateFormatter(Extensions extensions, Contact contact)
         {
             return _factories[extensions].Create(contact);
         }

@@ -15,9 +15,14 @@ namespace ContactDLL
             _Contact = contact;
         }
         */
-        public string Format(Contact contact)
+        public string Format(IEnumerable<Contact> contacts)
         {
-            return contact.ToString();
+            StringBuilder output = new StringBuilder();
+            foreach (Contact contact in contacts)
+            {
+                output.Append(contact);
+            }
+            return output.ToString();
         }
     }
 }
