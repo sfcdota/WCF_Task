@@ -32,7 +32,7 @@ namespace ContactDLL
             _BirthDate = birthDate;
         }
 
-        public string Surname
+        public override string Surname
         {
             get => _Surname;
             set
@@ -42,7 +42,7 @@ namespace ContactDLL
             }
         }
 
-        public string Name
+        public override string Name
         {
             get => _Name;
             set
@@ -51,7 +51,7 @@ namespace ContactDLL
             }
         }
 
-        public string Patronymic
+        public override string Patronymic
         {
             get => _Patronymic;
             set
@@ -77,7 +77,7 @@ namespace ContactDLL
                 _Position = value;
             }
         }
-        public string Sex
+        public override string Sex
         {
             get => _Sex;
             set

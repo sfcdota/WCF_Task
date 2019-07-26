@@ -158,15 +158,15 @@ namespace PracticeTask01
             DictionaryDelete(contactsDictionary, temp);
             DictionaryBypass(contactsDictionary);
             CheckBirthDateProperty();
-           // ContactFileSaver contactFileSaver = new ContactFileSaver();
-            contactFileSaver.Save(temp);
-            contactFileSaver.Dispose();
-            contactFileSaver.Dispose();
+            using (ContactFileSaver contactFileSaver = new ContactFileSaver(path))
+            {
+                contactFileSaver.Save(temp);
+            }
             Console.ReadKey();
 
 
-
-
+            //закомментировать публичные методы
+            // Environment.NewLine
             /*
 
             string contentFormat = "xml";
@@ -190,7 +190,7 @@ namespace PracticeTask01
 
 
             var formatterfactory = new Formatter().ExecuteFormatter(Extensions.CSV, temp);
-            formatterfactory.Format();
+            formatterfactory.Format(temp);
 
         }
     }

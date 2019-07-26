@@ -8,21 +8,22 @@ namespace ContactDLL
 {
     public class CSVContactFormatter: IFormatter
     {
-        private readonly Contact _Contact;
+       /* private readonly Contact _Contact;
         public CSVContactFormatter(Contact contact)
         {
             _Contact = contact;
         }
+        */
 
-        public string Format()
+        public string Format(Contact contact)
         {
-            return _Contact.Surname + ';'
-                + _Contact.Name + ';'
-                + _Contact.Patronymic + ';'
-                + _Contact.TaxpayerIdentificationNumber + ';'
-                + _Contact.Position + ';'
-                + _Contact.Sex + ';'
-                + _Contact.BirthDate;
+            return contact.Surname + ';'
+                + contact.Name + ';'
+                + contact.Patronymic + ';'
+                + contact.TaxpayerIdentificationNumber + ';'
+                + contact.Position + ';'
+                + contact.Sex + ';'
+                + contact.BirthDate;
         }
     }
 }

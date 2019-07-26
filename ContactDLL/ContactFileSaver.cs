@@ -7,7 +7,7 @@ using System.IO;
 using System.Xml.XmlConfiguration;
 namespace ContactDLL
 {
-    public sealed class ContactFileSaver : IDisposable, IContactFileSaver
+    public sealed class ContactFileSaver : IDisposable
     {
         private FileStream _stream = null;
         public ContactFileSaver(string path)

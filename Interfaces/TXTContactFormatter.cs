@@ -8,15 +8,16 @@ namespace ContactDLL
 {
     public class TXTContactFormatter: IFormatter
     {
+        /*
         private readonly Contact _Contact;
         public TXTContactFormatter(Contact contact)
         {
             _Contact = contact;
         }
-
-        public string Format()
+        */
+        public string Format(Contact contact)
         {
-            return _Contact.ToString();
+            return contact.ToString();
         }
     }
 }

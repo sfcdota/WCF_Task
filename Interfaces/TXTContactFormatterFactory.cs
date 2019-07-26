@@ -8,6 +8,9 @@ namespace ContactDLL
 {
     public class TXTContactFormatterFactory: ContactFormatterFactory
     {
-        public override IFormatter Create(Contact contact) => new TXTContactFormatter(contact);
+        public override IFormatter Create(Contact contact)
+        {
+            return new TXTContactFormatter();
+        }
     }
 }
