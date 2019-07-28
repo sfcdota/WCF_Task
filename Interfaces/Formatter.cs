@@ -11,12 +11,13 @@ namespace ContactDLL
 
         public Formatter()
         {
+            
             _factories = new Dictionary<Extensions, ContactFormatterFactory>
-        {
-            { Extensions.CSV, new CSVContactFormatterFactory() },
-            { Extensions.TXT, new TXTContactFormatterFactory() },
-            { Extensions.XML, new XMLContactFormatterFactory() },
-        };
+            {
+                { Extensions.CSV, new CSVContactFormatterFactory() },
+                { Extensions.TXT, new TXTContactFormatterFactory() },
+                { Extensions.XML, new XMLContactFormatterFactory() },
+            };
             /*
             foreach (Extensions extensions in Enum.GetValues(typeof(Extensions)))
             {
@@ -25,9 +26,9 @@ namespace ContactDLL
             }
             */
         }
-        public IFormatter CreateFormatter(Extensions extensions, Contact contact)
+        public IFormatter CreateFormatter(Extensions extensions, IEnumerable<Contact> contacts)
         {
-            return _factories[extensions].Create(contact);
+            return _factories[extensions].Create(contacts);
         }
     }
 }

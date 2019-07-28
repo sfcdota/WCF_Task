@@ -22,13 +22,21 @@ namespace ContactDLL
             foreach (Contact contact in contacts)
             {
                 output.Append(contact.Surname);
+                output.Append(";");
                 output.Append(contact.Name);
+                output.Append(";");
                 output.Append(contact.Patronymic);
+                output.Append(";");
                 output.Append(contact.TaxpayerIdentificationNumber);
+                output.Append(";");
                 output.Append(contact.Position);
+                output.Append(";");
                 output.Append(contact.Sex);
+                output.Append(";");
+                output.Append(contact.TelephoneNumber);
+                output.Append(";");
                 output.Append(contact.BirthDate);
-
+                output.Append(Environment.NewLine);
             }
             return output.ToString();
         }

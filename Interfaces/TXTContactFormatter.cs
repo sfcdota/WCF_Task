@@ -21,6 +21,7 @@ namespace ContactDLL
             foreach (Contact contact in contacts)
             {
                 output.Append(contact);
+                output.Append(Environment.NewLine);
             }
             return output.ToString();
         }

@@ -17,11 +17,12 @@ namespace ContactDLL
         private string _Position;
         private string _Sex;
         private DateTime _BirthDate;
+        private string _TelephoneNumber;
         public Contact()
         {
 
         }
-        public Contact(string surname, string name, string patronymic, string taxpayerIdentificationNumber, string position, string sex, DateTime birthDate)
+        public Contact(string surname, string name, string patronymic, string taxpayerIdentificationNumber, string position, string sex, string telephoneNumber, DateTime birthDate)
         {
             _Surname = surname;
             _Name = name;
@@ -30,6 +31,7 @@ namespace ContactDLL
             _Position = position;
             _Sex = sex;
             _BirthDate = birthDate;
+            _TelephoneNumber = telephoneNumber;
         }
 
         public override string Surname
@@ -96,13 +98,22 @@ namespace ContactDLL
             }
         }
 
+        public string TelephoneNumber
+        {
+            get => _TelephoneNumber;
+            set
+            {
+                _TelephoneNumber = value;
+            }
+        }
+
         public override string ToString()
         {
             return string.Concat(new object[] { Surname, " ", Name, " ",
                 Patronymic, " ", TaxpayerIdentificationNumber, " ",
-                Position, " ", Sex, " ", BirthDate});
+                Position, " ", Sex, " ", BirthDate, " ", TelephoneNumber});
         }
-
+        
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -116,11 +127,11 @@ namespace ContactDLL
                 contact.TaxpayerIdentificationNumber.Equals(this.TaxpayerIdentificationNumber) &&
                 contact.Position.Equals(this.Position) &&
                 contact.Sex.Equals(this.Sex) &&
-                contact.BirthDate == this.BirthDate;
+                contact.BirthDate == this.BirthDate && contact.TelephoneNumber.Equals(this.TelephoneNumber) ;
         }
         public override int GetHashCode()
         {
-            return new { Surname, Name, Patronymic, TaxpayerIdentificationNumber, Position, Sex, BirthDate }.GetHashCode();
+            return new { Surname, Name, Patronymic, TaxpayerIdentificationNumber, Position, Sex, BirthDate, TelephoneNumber }.GetHashCode();
         }
 
         #region
@@ -134,6 +145,7 @@ namespace ContactDLL
             temp._Position = _Position;
             temp._Sex = _Sex;
             temp._BirthDate = new DateTime(BirthDate.Year, BirthDate.Month, BirthDate.Day);
+            temp._TelephoneNumber = _TelephoneNumber;
             return temp;
         }
         #endregion

@@ -16,15 +16,14 @@ namespace ContactDLL
             _Contact = contact;
         }
         */
-        public string Format(Contact contact)
+
+        public string Format(IEnumerable<Contact> contacts)
         {
-            return contact.Surname + ';'
-                + contact.Name + ';'
-                + contact.Patronymic + ';'
-                + contact.TaxpayerIdentificationNumber + ';'
-                + contact.Position + ';'
-                + contact.Sex + ';'
-                + contact.BirthDate;
+            foreach(Contact contact in contacts)
+            {
+                
+            }
+            return string.Empty;
         }
     }
 }

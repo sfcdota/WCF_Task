@@ -58,7 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\Dictionary.cs" />
+    <Compile Include="DataStructures\Hashtable.cs" />
+    <Compile Include="DataStructures\LinkedList.cs" />
+    <Compile Include="DataStructures\List.cs" />
+    <Compile Include="DataStructures\Queue.cs" />
+    <Compile Include="DataStructures\Stack.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramContactsFilling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +92,13 @@
       <Project>{1d6d684e-d19d-444b-95ce-26adcdf7f6aa}</Project>
       <Name>Formatter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Saver\Saver.csproj">
+      <Project>{f67210a6-6793-4ced-ae73-10b8079c8e5e}</Project>
+      <Name>Saver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

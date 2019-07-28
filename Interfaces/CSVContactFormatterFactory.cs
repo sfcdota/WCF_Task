@@ -8,7 +8,7 @@ namespace ContactDLL
 {
     public class CSVContactFormatterFactory : ContactFormatterFactory
     {
-        public override IFormatter Create(Contact contact)
+        public override IFormatter Create(IEnumerable<Contact> contacts)
         {
             return new CSVContactFormatter();
         }

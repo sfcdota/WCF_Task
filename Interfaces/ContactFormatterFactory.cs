@@ -8,6 +8,6 @@ namespace ContactDLL
 {
     public abstract class ContactFormatterFactory
     {
-        public abstract IFormatter Create(Contact contact);
+        public abstract IFormatter Create(IEnumerable<Contact> contacts);
     }
 }
