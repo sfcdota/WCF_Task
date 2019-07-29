@@ -26,6 +26,8 @@ namespace ContactDLL
             }
             */
         }
+
+        //creating FormatterFactyory interface
         public IFormatter CreateFormatter(Extensions extensions, IEnumerable<Contact> contacts)
         {
             return _factories[extensions].Create(contacts);

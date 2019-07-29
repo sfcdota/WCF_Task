@@ -14,6 +14,7 @@ namespace PracticeTask01
     {
         static void Main(string[] args)
         {
+            DataStructuresTaskAndCheckAttribute();
             var sourceArray = CreateArrayListOfContacts();
             var contactsList = CreateListOfContactsFromSource(sourceArray);
             string path = Path.Combine(Environment.CurrentDirectory, "SavedContacts");
@@ -24,13 +25,8 @@ namespace PracticeTask01
                 contactFileSaver.Save(path, contactsList);
             }
             Console.ReadKey();
-            // Environment.NewLine
-            /*
-             * закомментировать публичные методы
-             * Environment.NewLine
-             * saver.Save(path, text);
-             * FormattedContact formattedContact = new FormattedContact(contact);
-            */
         }
     }
 }
+/* сделать так, чтобы переход с одного логгера на другой был минимален по изменениям в коде
+ */

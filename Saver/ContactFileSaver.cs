@@ -28,11 +28,10 @@ namespace ContactDLL
         //Get final path due to settings
         public string ExtendedPathDueToRewriteSettingsAndExtension(string path, string enteredExtension)
         {
-            StringBuilder builder = new StringBuilder();
             int i = 1;
             string baseName = path;
             path = Path.Combine(baseName + "." + enteredExtension);
-            if (ConfigurationManager.AppSettings["RewriteAllowed"].Equals("no"))
+            if (ConfigurationManager.AppSettings["RewriteAllowed"].Equals("no"))//true or false value
                 while (File.Exists(path))
                 {
                     path = Path.Combine(baseName + "-" + i + "." + enteredExtension);
@@ -45,12 +44,10 @@ namespace ContactDLL
         {
             Console.WriteLine("Enter needed extension for output file");
             string enteredExtenstion = Console.ReadLine().ToUpper();
-            if (Enum.IsDefined(typeof(Extensions), enteredExtenstion))
-            {
-                Console.WriteLine("Saving...");
-                Extensions extensions;
-                Enum.TryParse(enteredExtenstion, out extensions);
 
+            if (Enum.TryParse(enteredExtenstion, out Extensions extensions))
+            { 
+                Console.WriteLine("Saving...");
                 path = ExtendedPathDueToRewriteSettingsAndExtension(path, enteredExtenstion);
                 _stream = new FileStream(path, FileMode.OpenOrCreate);
                 StreamWriter writer = new StreamWriter(_stream);
@@ -60,7 +57,7 @@ namespace ContactDLL
                 Console.WriteLine("Save completed");
             }
             else
-                Console.WriteLine("Save failed. Entered extension is not correct");
+                Console.WriteLine("Save failed. Entered extension {0} is not exitst", enteredExtenstion);
         }
         //interface implementation
         #region

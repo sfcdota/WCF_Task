@@ -15,6 +15,7 @@ namespace ContactDLL
             _Contact = contact;
         }
         */
+        //formatting IEnumerable collection to txt
         public string Format(IEnumerable<Contact> contacts)
         {
             StringBuilder output = new StringBuilder();

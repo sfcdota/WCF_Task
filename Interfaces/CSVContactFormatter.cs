@@ -16,7 +16,7 @@ namespace ContactDLL
          }
          */
 
-
+            //formatting IEnumerable collection to CSV
         public string Format(IEnumerable<Contact> contacts)
         {
             StringBuilder output = new StringBuilder();
