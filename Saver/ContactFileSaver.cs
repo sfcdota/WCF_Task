@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.XmlConfiguration;
+using System.Configuration;
 namespace ContactDLL
 {
     public sealed class ContactFileSaver : IDisposable
@@ -25,6 +26,21 @@ namespace ContactDLL
             return t;
         }*/
 
+        public string ExtendedPathDueToRewriteSettingsAndExtension(string path, string enteredExtension)
+        {
+            StringBuilder builder = new StringBuilder();
+            int i = 1;
+            string baseName = path;
+            path = Path.Combine(baseName + "." + enteredExtension);
+            if (ConfigurationManager.AppSettings["RewriteAllowed"].Equals("no"))
+                while (File.Exists(path))
+                {
+                    path = Path.Combine(baseName + "-" + i + "." + enteredExtension);
+                    i++;
+                }
+            return path;
+        }
+
         public void Save(string path, IEnumerable<Contact> contacts)
         {
             Console.WriteLine("Enter needed extension for output file");
@@ -34,7 +50,8 @@ namespace ContactDLL
                 Console.WriteLine("Saving...");
                 Extensions extensions;
                 Enum.TryParse(enteredExtenstion, out extensions);
-                path = Path.Combine(path + "." + enteredExtenstion);
+
+                path = ExtendedPathDueToRewriteSettingsAndExtension(path, enteredExtenstion);
                 _stream = new FileStream(path, FileMode.OpenOrCreate);
                 StreamWriter writer = new StreamWriter(_stream);
                 var formatterfactory = new Formatter().CreateFormatter(extensions, contacts);

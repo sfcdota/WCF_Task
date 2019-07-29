@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace ContactDLL
 {
@@ -35,7 +36,7 @@ namespace ContactDLL
                 output.Append(";");
                 output.Append(contact.TelephoneNumber);
                 output.Append(";");
-                output.Append(contact.BirthDate);
+                output.Append(contact.BirthDate.ToString(ConfigurationManager.AppSettings["DataFormat"]));
                 output.Append(Environment.NewLine);
             }
             return output.ToString();

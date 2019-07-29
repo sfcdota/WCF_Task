@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-
+using System.Configuration;
 namespace ContactDLL
 {
     [ClassDescription(Description = "Контакт")]
@@ -98,6 +98,7 @@ namespace ContactDLL
             }
         }
 
+
         public string TelephoneNumber
         {
             get => _TelephoneNumber;
@@ -109,9 +110,13 @@ namespace ContactDLL
 
         public override string ToString()
         {
-            return string.Concat(new object[] { Surname, " ", Name, " ",
+            return string.Concat(new object[] 
+            {   Surname, " ", Name, " ",
                 Patronymic, " ", TaxpayerIdentificationNumber, " ",
-                Position, " ", Sex, " ", BirthDate, " ", TelephoneNumber});
+                Position, " ", Sex, " ",
+                BirthDate.ToString(ConfigurationManager.AppSettings["DataFormat"]), " ",
+                TelephoneNumber
+            });
         }
         
         public override bool Equals(object obj)
