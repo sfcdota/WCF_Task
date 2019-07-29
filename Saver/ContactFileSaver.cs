@@ -25,7 +25,7 @@ namespace ContactDLL
             }
             return t;
         }*/
-
+        //Get final path due to settings
         public string ExtendedPathDueToRewriteSettingsAndExtension(string path, string enteredExtension)
         {
             StringBuilder builder = new StringBuilder();
@@ -40,7 +40,7 @@ namespace ContactDLL
                 }
             return path;
         }
-
+        //save collection to the selected path
         public void Save(string path, IEnumerable<Contact> contacts)
         {
             Console.WriteLine("Enter needed extension for output file");
@@ -62,7 +62,7 @@ namespace ContactDLL
             else
                 Console.WriteLine("Save failed. Entered extension is not correct");
         }
-        
+        //interface implementation
         #region
         public void Dispose()
         {
