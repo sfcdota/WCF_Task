@@ -17,7 +17,7 @@ namespace ContactDLL
          */
 
             //formatting IEnumerable collection to CSV
-        public string Format(IEnumerable<Contact> contacts)
+        public string Format(IEnumerable<Contact> contacts, string dataFormat)
         {
             StringBuilder output = new StringBuilder();
             foreach (Contact contact in contacts)
@@ -36,7 +36,7 @@ namespace ContactDLL
                 output.Append(";");
                 output.Append(contact.TelephoneNumber);
                 output.Append(";");
-                output.Append(contact.BirthDate.ToString(ConfigurationManager.AppSettings["DataFormat"]));
+                output.Append(contact.BirthDate.ToString(dataFormat));
                 output.Append(Environment.NewLine);
             }
             return output.ToString();

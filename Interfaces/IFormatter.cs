@@ -8,6 +8,6 @@ namespace ContactDLL
 {
     public interface IFormatter
     {
-        string Format(IEnumerable<Contact> contacts);
+        string Format(IEnumerable<Contact> contacts, string dataFormat);
     }
 }

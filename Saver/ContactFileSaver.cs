@@ -11,27 +11,22 @@ namespace ContactDLL
     public sealed class ContactFileSaver : IDisposable
     {
         private FileStream _stream = null; //можно засунуть в сейв вместе с инициализацией, но по заданию - переменная класса :(
-
-       /* public bool CorrectExtension(string enteredExtension)
+        private bool _RewriteAllowed;
+        private string _DataFormat;
+        private static log4net.ILog _Log;
+        public ContactFileSaver(bool rewriteAllowed, string dataFormat, log4net.ILog log)
         {
-            bool t = false;
-            foreach(string x in Enum.GetNames(typeof(Extensions)))
-            {
-                if(enteredExtension.Equals(x))
-                {
-                    t = !t;
-                    break;
-                }
-            }
-            return t;
-        }*/
+            _RewriteAllowed = rewriteAllowed;
+            _DataFormat = dataFormat;
+            _Log = log;
+        }
         //Get final path due to settings
         public string ExtendedPathDueToRewriteSettingsAndExtension(string path, string enteredExtension)
         {
             int i = 1;
             string baseName = path;
             path = Path.Combine(baseName + "." + enteredExtension);
-            if (ConfigurationManager.AppSettings["RewriteAllowed"].Equals("no"))//true or false value
+            if (!_RewriteAllowed)//true or false value
                 while (File.Exists(path))
                 {
                     path = Path.Combine(baseName + "-" + i + "." + enteredExtension);
@@ -40,11 +35,10 @@ namespace ContactDLL
             return path;
         }
         //save collection to the selected path
-        public void Save(string path, IEnumerable<Contact> contacts)
+        public void Save(string path, IEnumerable<Contact> contacts, log4net.ILog log)
         {
             Console.WriteLine("Enter needed extension for output file");
             string enteredExtenstion = Console.ReadLine().ToUpper();
-
             if (Enum.TryParse(enteredExtenstion, out Extensions extensions))
             { 
                 Console.WriteLine("Saving...");
@@ -52,7 +46,8 @@ namespace ContactDLL
                 _stream = new FileStream(path, FileMode.OpenOrCreate);
                 StreamWriter writer = new StreamWriter(_stream);
                 var formatterfactory = new Formatter().CreateFormatter(extensions, contacts);
-                writer.WriteLine(formatterfactory.Format(contacts));
+                log.Info(extensions+"FormatterFactory created due to user input");
+                writer.WriteLine(formatterfactory.Format(contacts, _DataFormat));
                 writer.Close();
                 Console.WriteLine("Save completed");
             }

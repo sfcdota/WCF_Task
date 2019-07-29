@@ -16,12 +16,12 @@ namespace ContactDLL
         }
         */
         //formatting IEnumerable collection to txt
-        public string Format(IEnumerable<Contact> contacts)
+        public string Format(IEnumerable<Contact> contacts, string dataFormat)
         {
             StringBuilder output = new StringBuilder();
             foreach (Contact contact in contacts)
             {
-                output.Append(contact);
+                output.Append(contact.ToString(dataFormat));
                 output.Append(Environment.NewLine);
             }
             return output.ToString();

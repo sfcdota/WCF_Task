@@ -114,6 +114,17 @@ namespace ContactDLL
             {   Surname, " ", Name, " ",
                 Patronymic, " ", TaxpayerIdentificationNumber, " ",
                 Position, " ", Sex, " ",
+                BirthDate.ToString(), " ",
+                TelephoneNumber
+            });
+        }
+
+        public string ToString(string dataFormat)
+        {
+            return string.Concat(new object[]
+            {   Surname, " ", Name, " ",
+                Patronymic, " ", TaxpayerIdentificationNumber, " ",
+                Position, " ", Sex, " ",
                 BirthDate.ToString(ConfigurationManager.AppSettings["DataFormat"]), " ",
                 TelephoneNumber
             });

@@ -19,7 +19,7 @@ namespace ContactDLL
         }
         */
         //formatting IEnumerable collection to xml
-        public string Format(IEnumerable<Contact> contacts)
+        public string Format(IEnumerable<Contact> contacts, string dataFormat)
         {
             XmlDocument xmlDoc = new XmlDocument();
             XmlNode rootNode = xmlDoc.CreateElement("contacts");
@@ -52,7 +52,7 @@ namespace ContactDLL
                 contactAttribute.Value = contact.TelephoneNumber;
                 userNode.Attributes.Append(contactAttribute);
                 contactAttribute = xmlDoc.CreateAttribute("BirthDate");
-                contactAttribute.Value = contact.BirthDate.ToString(ConfigurationManager.AppSettings["DataFormat"]);
+                contactAttribute.Value = contact.BirthDate.ToString(dataFormat);
                 userNode.Attributes.Append(contactAttribute);
                 // BirthDate.ToString(ConfigurationManager.AppSettings["DataFormat"])
             }
