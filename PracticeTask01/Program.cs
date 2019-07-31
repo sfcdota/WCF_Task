@@ -9,16 +9,15 @@ using ContactDLL;
 using System.IO;
 using log4net;
 using System.Configuration;
-
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+using LoggerNamespace;
 namespace PracticeTask01
 {
     partial class Program
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         static void Main(string[] args)
         {
-            log.Info("Program started");
+            var logger = new Logger().CreateLogger(LoggersEnum.log4net);
+            logger.Info("Program started");
             DataStructuresTaskAndCheckAttribute();
             var sourceArray = CreateArrayListOfContacts();
             var contactsList = CreateListOfContactsFromSource(sourceArray);
@@ -28,12 +27,12 @@ namespace PracticeTask01
             //var formatterfactory = new Formatter().CreateFormatter(Extensions.CSV, contactsList);
             //formatterfactory.Format(contactsList);
 
-            using (ContactFileSaver contactFileSaver = new ContactFileSaver(rewriteAllowed, dataFormat, log))
+            using (ContactFileSaver contactFileSaver = new ContactFileSaver(rewriteAllowed, dataFormat, logger))
             {
-                contactFileSaver.Save(path, contactsList, log);
+                contactFileSaver.Save(path, contactsList, logger);
             }
             Console.ReadKey();
-            log.Info("program finished");
+            logger.Info("program finished");
         }
     }
 }

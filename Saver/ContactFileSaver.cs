@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.XmlConfiguration;
 using System.Configuration;
+using LoggerNamespace;
 namespace ContactDLL
 {
     public sealed class ContactFileSaver : IDisposable
@@ -13,12 +14,12 @@ namespace ContactDLL
         private FileStream _stream = null; //можно засунуть в сейв вместе с инициализацией, но по заданию - переменная класса :(
         private bool _RewriteAllowed;
         private string _DataFormat;
-        private static log4net.ILog _Log;
-        public ContactFileSaver(bool rewriteAllowed, string dataFormat, log4net.ILog log)
+        private static ILogger _Logger;
+        public ContactFileSaver(bool rewriteAllowed, string dataFormat, ILogger logger)
         {
             _RewriteAllowed = rewriteAllowed;
             _DataFormat = dataFormat;
-            _Log = log;
+            _Logger = logger;
         }
         //Get final path due to settings
         public string ExtendedPathDueToRewriteSettingsAndExtension(string path, string enteredExtension)
@@ -35,7 +36,7 @@ namespace ContactDLL
             return path;
         }
         //save collection to the selected path
-        public void Save(string path, IEnumerable<Contact> contacts, log4net.ILog log)
+        public void Save(string path, IEnumerable<Contact> contacts, ILogger logger)
         {
             Console.WriteLine("Enter needed extension for output file");
             string enteredExtenstion = Console.ReadLine().ToUpper();
@@ -46,7 +47,7 @@ namespace ContactDLL
                 _stream = new FileStream(path, FileMode.OpenOrCreate);
                 StreamWriter writer = new StreamWriter(_stream);
                 var formatterfactory = new Formatter().CreateFormatter(extensions, contacts);
-                log.Info(extensions+"FormatterFactory created due to user input");
+                logger.Info(extensions+"FormatterFactory created due to user input");
                 writer.WriteLine(formatterfactory.Format(contacts, _DataFormat));
                 writer.Close();
                 Console.WriteLine("Save completed");

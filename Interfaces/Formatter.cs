@@ -8,7 +8,6 @@ namespace ContactDLL
     public class Formatter
     {
         private readonly Dictionary<Extensions, ContactFormatterFactory> _factories;
-
         public Formatter()
         {
             

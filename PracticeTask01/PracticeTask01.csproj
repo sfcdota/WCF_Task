@@ -97,6 +97,10 @@
       <Project>{1d6d684e-d19d-444b-95ce-26adcdf7f6aa}</Project>
       <Name>Formatter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{b1e82c3f-d94a-4129-87c5-577d7df11a0e}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Saver\Saver.csproj">
       <Project>{f67210a6-6793-4ced-ae73-10b8079c8e5e}</Project>
       <Name>Saver</Name>
