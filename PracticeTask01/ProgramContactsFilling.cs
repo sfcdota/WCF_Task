@@ -11,7 +11,14 @@ namespace PracticeTask01
 {
     partial class Program
     {
-        //checking valid birthday
+        /// <summary>
+        /// Функция, сравнения дат (>)
+        /// </summary>
+        /// <param name="contact"></param>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="day"></param>
+        /// <returns></returns>
         public static bool ValidateBirthDate(Contact contact, int year, int month, int day)
         {
             DateTime temp = new DateTime(year, month, day);
@@ -19,7 +26,9 @@ namespace PracticeTask01
                 return true;
             else return false;
         }
-        //checking valid birthday property with attribute
+        /// <summary>
+        /// Проверка свойства birthday класса contact в соответствии с атрибутом
+        /// </summary>
         public static void CheckBirthDateProperty()
         {
             Contact contact = new Contact() { BirthDate = DateTime.Now };
@@ -43,7 +52,10 @@ namespace PracticeTask01
             Console.WriteLine(isValid);
         }
         
-        //creating source array of contacts
+        /// <summary>
+        /// Создание исходного массива контактов
+        /// </summary>
+        /// <returns></returns>
         public static ArrayList CreateArrayListOfContacts()
         {
             ArrayList sourceArray = new ArrayList();
@@ -60,7 +72,9 @@ namespace PracticeTask01
             sourceArray.Add(new Contact("h", "h", "h", "h", "h", "h", "h", new DateTime(8, 8, 8)));
             return sourceArray;
         }
-        //running task with selected filled datastructures
+        /// <summary>
+        /// Выполнение действий и использование функционала, указанных в задании
+        /// </summary>
         public static void DataStructuresTaskAndCheckAttribute()
         {
             ArrayList sourceArray = CreateArrayListOfContacts();

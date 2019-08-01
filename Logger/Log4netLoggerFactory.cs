@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LoggerNamespace
 {
-    public class Log4netLoggerFactory : LoggerFactory
+    /// <summary>
+    /// Фабричный класс log4net логгера
+    /// </summary>
+    public sealed class Log4netLoggerFactory : LoggerFactory
     {
         public override ILogger Create()
         {

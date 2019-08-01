@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
+    /// <summary>
+    /// Интерфейс функционала форматировщика
+    /// </summary>
     public interface IFormatter
     {
         string Format(IEnumerable<Contact> contacts, string dataFormat);

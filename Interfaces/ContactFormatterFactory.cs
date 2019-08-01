@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
+    /// <summary>
+    /// Фабрика для форматировщиков IEnumerable коллекции контактов
+    /// </summary>
     public abstract class ContactFormatterFactory
     {
         public abstract IFormatter Create(IEnumerable<Contact> contacts);

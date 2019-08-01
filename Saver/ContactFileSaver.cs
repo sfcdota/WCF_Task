@@ -9,6 +9,9 @@ using System.Configuration;
 using LoggerNamespace;
 namespace ContactDLL
 {
+    /// <summary>
+    /// Класс, предназначенный для сохранения коллекции контактов 
+    /// </summary>
     public sealed class ContactFileSaver : IDisposable
     {
         private FileStream _stream = null; //можно засунуть в сейв вместе с инициализацией, но по заданию - переменная класса :(
@@ -21,7 +24,13 @@ namespace ContactDLL
             _DataFormat = dataFormat;
             _Logger = logger;
         }
-        //Get final path due to settings
+        /// <summary>
+        /// Получение пути файла в соответствии с настройками конфигурации
+        /// и с учетом существования файла с таким же названием в указанной директории
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="enteredExtension"></param>
+        /// <returns></returns>
         public string ExtendedPathDueToRewriteSettingsAndExtension(string path, string enteredExtension)
         {
             int i = 1;
@@ -35,7 +44,12 @@ namespace ContactDLL
                 }
             return path;
         }
-        //save collection to the selected path
+        /// <summary>
+        /// Сохранение коллекции контактов в указанную директорию с запросом формата у пользователя через консоль
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="contacts"></param>
+        /// <param name="logger"></param>
         public void Save(string path, IEnumerable<Contact> contacts, ILogger logger)
         {
             Console.WriteLine("Enter needed extension for output file");
@@ -58,7 +72,6 @@ namespace ContactDLL
                 logger.Info("Save failed. Entered extension " + enteredExtenstion + " is not exist");
             }
         }
-        //interface implementation
         #region
         public void Dispose()
         {

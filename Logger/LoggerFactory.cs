@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace LoggerNamespace
 {
+    /// <summary>
+    /// Фабрика логгеров
+    /// </summary>
     public abstract class LoggerFactory
     {
         public abstract ILogger Create();

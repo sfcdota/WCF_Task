@@ -7,6 +7,9 @@ using System.Reflection;
 using System.Configuration;
 namespace ContactDLL
 {
+    /// <summary>
+    /// Класс данных о контакте и его методов
+    /// </summary>
     [ClassDescription(Description = "Контакт")]
     public sealed class Contact : Person, ICloneable
     {
@@ -118,7 +121,11 @@ namespace ContactDLL
                 TelephoneNumber
             });
         }
-
+        /// <summary>
+        /// Перевод контакта(всех его полей) в тип string с учетом конфигурируемого шаблона даты
+        /// </summary>
+        /// <param name="dataFormat"></param>
+        /// <returns></returns>
         public string ToString(string dataFormat)
         {
             return string.Concat(new object[]

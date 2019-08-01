@@ -7,16 +7,17 @@ using System.Configuration;
 
 namespace ContactDLL
 {
-    public class CSVContactFormatter: IFormatter
+    /// <summary>
+    /// Форматировщик типа CSV для IEnumerable коллекции контактов
+    /// </summary>
+    public sealed class CSVContactFormatter : IFormatter
     {
-        /* private readonly Contact _Contact;
-         public CSVContactFormatter(Contact contact)
-         {
-             _Contact = contact;
-         }
-         */
-
-            //formatting IEnumerable collection to CSV
+        /// <summary>
+        /// Функция форматирования коллекции в CSV формат
+        /// </summary>
+        /// <param name="contacts"></param>
+        /// <param name="dataFormat"></param>
+        /// <returns></returns>
         public string Format(IEnumerable<Contact> contacts, string dataFormat)
         {
             StringBuilder output = new StringBuilder();

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
+    /// <summary>
+    /// Атрибут, указывающий минимальную дату для свойства
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
-    public class MinimalBirthDateAttribute : System.Attribute
+    public sealed class MinimalBirthDateAttribute : System.Attribute
     {
         private int _Year;
         private int _Month;

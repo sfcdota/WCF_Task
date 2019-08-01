@@ -9,16 +9,17 @@ using System.IO;
 
 namespace ContactDLL
 {
-    public class XMLContactFormatter: IFormatter
+    /// <summary>
+    /// Форматировщик типа XML для IEnumerable коллекции контактов
+    /// </summary>
+    public sealed class XMLContactFormatter : IFormatter
     {
-        /*
-        private readonly Contact _Contact;
-        public XMLContactFormatter(Contact contact)
-        {
-            _Contact = contact;
-        }
-        */
-        //formatting IEnumerable collection to xml
+        /// <summary>
+        /// Функция форматирования коллекции в TXT формат
+        /// </summary>
+        /// <param name="contacts"></param>
+        /// <param name="dataFormat"></param>
+        /// <returns></returns>
         public string Format(IEnumerable<Contact> contacts, string dataFormat)
         {
             XmlDocument xmlDoc = new XmlDocument();

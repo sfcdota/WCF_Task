@@ -15,7 +15,7 @@ namespace PracticeTask01
     partial class Program
     {
         static void Main(string[] args)
-        {
+        { 
             var logger = new Logger().CreateLogger(LoggersEnum.log4net);
             logger.Info("Program started");
             DataStructuresTaskAndCheckAttribute();
@@ -24,8 +24,6 @@ namespace PracticeTask01
             bool rewriteAllowed = Convert.ToBoolean(ConfigurationManager.AppSettings["RewriteAllowed"]);
             string dataFormat = ConfigurationManager.AppSettings["DataFormat"];
             string path = Path.Combine(Environment.CurrentDirectory, "SavedContacts");
-            //var formatterfactory = new Formatter().CreateFormatter(Extensions.CSV, contactsList);
-            //formatterfactory.Format(contactsList);
 
             using (ContactFileSaver contactFileSaver = new ContactFileSaver(rewriteAllowed, dataFormat, logger))
             {
@@ -33,8 +31,7 @@ namespace PracticeTask01
             }
             Console.ReadKey();
             logger.Info("program finished");
+            
         }
     }
 }
-/* сделать так, чтобы переход с одного логгера на другой был минимален по изменениям в коде
- */

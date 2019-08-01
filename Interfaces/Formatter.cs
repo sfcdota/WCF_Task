@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 namespace ContactDLL
 {
-    public class Formatter
+    /// <summary>
+    /// Форматировщик, реализующий каждый из поддерживаемых форматов вывода
+    /// </summary>
+    public sealed class Formatter
     {
         private readonly Dictionary<Extensions, ContactFormatterFactory> _factories;
         public Formatter()
@@ -25,8 +28,12 @@ namespace ContactDLL
             }
             */
         }
-
-        //creating FormatterFactyory interface
+        /// <summary>
+        /// Создание интерфейса, реализующего поддерживание доступных форматов вывода
+        /// </summary>
+        /// <param name="extensions"></param>
+        /// <param name="contacts"></param>
+        /// <returns></returns>
         public IFormatter CreateFormatter(Extensions extensions, IEnumerable<Contact> contacts)
         {
             return _factories[extensions].Create(contacts);

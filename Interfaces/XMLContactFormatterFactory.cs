@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
-    public class XMLContactFormatterFactory: ContactFormatterFactory
+    /// <summary>
+    /// Фабричный класс CSV форматировщика
+    /// </summary>
+    public sealed class XMLContactFormatterFactory: ContactFormatterFactory
     {
         public override IFormatter Create(IEnumerable<Contact> contacts)
         {

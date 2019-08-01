@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
-    public class TXTContactFormatter: IFormatter
+    /// <summary>
+    /// Форматировщик типа TXT для IEnumerable коллекции контактов
+    /// </summary>
+    public sealed class TXTContactFormatter : IFormatter
     {
-        /*
-        private readonly Contact _Contact;
-        public TXTContactFormatter(Contact contact)
-        {
-            _Contact = contact;
-        }
-        */
-        //formatting IEnumerable collection to txt
+        /// <summary>
+        /// Функция форматирования коллекции в TXT формат
+        /// </summary>
+        /// <param name="contacts"></param>
+        /// <param name="dataFormat"></param>
+        /// <returns></returns>
         public string Format(IEnumerable<Contact> contacts, string dataFormat)
         {
             StringBuilder output = new StringBuilder();

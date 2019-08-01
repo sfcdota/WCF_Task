@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ContactDLL
 {
-    public class TXTContactFormatterFactory: ContactFormatterFactory
+    /// <summary>
+    /// Фабричный класс TXT форматировщика
+    /// </summary>
+    public sealed class TXTContactFormatterFactory : ContactFormatterFactory
     {
         public override IFormatter Create(IEnumerable<Contact> contacts)
         {
