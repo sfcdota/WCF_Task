@@ -18,32 +18,15 @@ namespace ContactDLL
         private bool _RewriteAllowed;
         private string _DataFormat;
         private static ILogger _Logger;
+        private PathChecker _PathChecker = null;
         public ContactFileSaver(bool rewriteAllowed, string dataFormat, ILogger logger)
         {
             _RewriteAllowed = rewriteAllowed;
             _DataFormat = dataFormat;
             _Logger = logger;
+            _PathChecker = new PathChecker(rewriteAllowed);
         }
-        /// <summary>
-        /// Получение пути файла в соответствии с настройками конфигурации
-        /// и с учетом существования файла с таким же названием в указанной директории
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="enteredExtension"></param>
-        /// <returns></returns>
-        public string ExtendedPathDueToRewriteSettingsAndExtension(string path, string enteredExtension)
-        {
-            int i = 1;
-            string baseName = path;
-            path = Path.Combine(baseName + "." + enteredExtension);
-            if (!_RewriteAllowed)//true or false value
-                while (File.Exists(path))
-                {
-                    path = Path.Combine(baseName + "-" + i + "." + enteredExtension);
-                    i++;
-                }
-            return path;
-        }
+
         /// <summary>
         /// Сохранение коллекции контактов в указанную директорию с запросом формата у пользователя через консоль
         /// </summary>
@@ -57,7 +40,7 @@ namespace ContactDLL
             if (Enum.TryParse(enteredExtenstion, out Extensions extensions))
             {
                 Console.WriteLine("Saving...");
-                path = ExtendedPathDueToRewriteSettingsAndExtension(path, enteredExtenstion);
+                path = _PathChecker.GetRightPath(path, enteredExtenstion);
                 _stream = new FileStream(path, FileMode.OpenOrCreate);
                 StreamWriter writer = new StreamWriter(_stream);
                 var formatterfactory = new Formatter().CreateFormatter(extensions, contacts);
