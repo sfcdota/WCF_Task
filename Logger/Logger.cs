@@ -8,10 +8,10 @@ namespace LoggerNamespace
 {
     public class Logger
     {
-        private readonly Dictionary<LoggersEnum, LoggerFactory> _factories;
+        private readonly Dictionary<LoggersEnum, LoggerFactory> _Factories;
         public Logger()
         {
-            _factories = new Dictionary<LoggersEnum, LoggerFactory>
+            _Factories = new Dictionary<LoggersEnum, LoggerFactory>
             {
                 { LoggersEnum.log4net, new Log4netLoggerFactory() }
             };
@@ -20,7 +20,7 @@ namespace LoggerNamespace
 
         public ILogger CreateLogger(LoggersEnum loggersEnum)
         {
-            return _factories[loggersEnum].Create();
+            return _Factories[loggersEnum].Create();
         }
     }
 }

@@ -41,19 +41,22 @@ namespace ContactDLL
             Console.WriteLine("Enter needed extension for output file");
             string enteredExtenstion = Console.ReadLine().ToUpper();
             if (Enum.TryParse(enteredExtenstion, out Extensions extensions))
-            { 
+            {
                 Console.WriteLine("Saving...");
                 path = ExtendedPathDueToRewriteSettingsAndExtension(path, enteredExtenstion);
                 _stream = new FileStream(path, FileMode.OpenOrCreate);
                 StreamWriter writer = new StreamWriter(_stream);
                 var formatterfactory = new Formatter().CreateFormatter(extensions, contacts);
-                logger.Info(extensions+"FormatterFactory created due to user input");
+                logger.Info(extensions + "FormatterFactory created due to user input");
                 writer.WriteLine(formatterfactory.Format(contacts, _DataFormat));
                 writer.Close();
                 Console.WriteLine("Save completed");
             }
             else
+            {
                 Console.WriteLine("Save failed. Entered extension {0} is not exitst", enteredExtenstion);
+                logger.Info("Save failed. Entered extension " + enteredExtenstion + " is not exist");
+            }
         }
         //interface implementation
         #region

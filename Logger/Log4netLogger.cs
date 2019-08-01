@@ -7,17 +7,19 @@ using log4net;
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace LoggerNamespace
 {
-    public class Log4netLogger : ILogger
+    public sealed class Log4netLogger : ILogger
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog _Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //почему юзается рефлексия на currentmethod
+
         public void Error(string error)
         {
-            log.Error(error);
+            _Log.Error(error);
         }
 
         public void Info(string info)
         {
-            log.Info(info);
+            _Log.Info(info);
         }
     }
 }
